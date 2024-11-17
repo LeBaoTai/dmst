@@ -1,15 +1,20 @@
 import Post from '@/components/BelowContent/Tags/tag'
-import { RootState } from '@/redux/store'
-import { ITag } from '@/types/belowContent/belowContent'
+import { IApp } from '@/types/app'
+import { IBelowContent, ITag, ITags } from '@/types/belowContent/belowContent'
 import { IPost } from '@/types/post'
-import { useSelector } from 'react-redux'
+import { NEXT_PUBLIC_BASE_URL } from '@/utils/constant'
+import { HOME_PATH_API } from '@/utils/paths'
 
-export default function Tags() {
-  const tagsSeletor = useSelector(
-    (state: RootState) => state.appData.data.noi_dung?.[4].tags
-  )
+export default async function Tags() {
+  const response = await fetch(`${NEXT_PUBLIC_BASE_URL}${HOME_PATH_API}`)
+  if (!response.ok) {
+    throw new Error('Failed to fetch data')
+  }
+  const data: IApp = await response.json()
+  const belowContent: IBelowContent = data.noi_dung[4]
+  const tagConent: ITags = belowContent.tags
 
-  const tags: ITag[] = tagsSeletor?.dmst_tags ?? []
+  const tags: ITag[] = tagConent.dmst_tags
 
   return (
     <div className="grid gap-4 pt-4 md:grid-cols-2 md:grid-rows-2">

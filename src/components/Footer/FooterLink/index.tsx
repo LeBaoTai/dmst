@@ -2,7 +2,7 @@ import { IFooterLink } from '@/types/footer/footerLink'
 import Link from 'next/link'
 import React from 'react'
 
-function FooterLink(link: IFooterLink) {
+export default function FooterLink(link: IFooterLink) {
   return (
     <div>
       <Link href={link.link || '#'}>
@@ -11,5 +11,3 @@ function FooterLink(link: IFooterLink) {
     </div>
   )
 }
-
-export default FooterLink

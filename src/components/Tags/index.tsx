@@ -1,15 +1,19 @@
 import Post from '@/components/Tags/Post'
-import { RootState } from '@/redux/store'
+import { IApp } from '@/types/app'
 import { IPost } from '@/types/post'
-import { ITag } from '@/types/tags/tags'
-import { useSelector } from 'react-redux'
+import { ITag, ITags } from '@/types/tags/tags'
+import { NEXT_PUBLIC_BASE_URL } from '@/utils/constant'
+import { HOME_PATH_API } from '@/utils/paths'
 
-export default function Tags() {
-  const tagSelector = useSelector(
-    (state: RootState) => state.appData.data.noi_dung?.[3]
-  )
+export default async function Tags() {
+  const response = await fetch(`${NEXT_PUBLIC_BASE_URL}${HOME_PATH_API}`)
+  if (!response.ok) {
+    throw new Error('Failed to fetch data')
+  }
+  const data: IApp = await response.json()
 
-  const tags: ITag[] = tagSelector?.dmst_tags ?? []
+  const tagsType: ITags = data.noi_dung[3]
+  const tags: ITag[] = tagsType.dmst_tags
 
   return (
     <div className="pt-4">

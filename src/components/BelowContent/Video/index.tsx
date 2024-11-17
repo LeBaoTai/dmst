@@ -1,45 +1,47 @@
-'use client'
-
 import CarouselVideoItem from '@/components/BelowContent/Video/CarouselVideoItem'
 import {
   Carousel,
-  CarouselApi,
   CarouselContent,
   CarouselNext,
   CarouselPrevious
 } from '@/components/ui/carousel'
-import { RootState } from '@/redux/store'
+import { IApp } from '@/types/app'
+import { IBelowContent } from '@/types/belowContent/belowContent'
 import { IVideo } from '@/types/belowContent/video'
-import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { NEXT_PUBLIC_BASE_URL } from '@/utils/constant'
+import { HOME_PATH_API } from '@/utils/paths'
 
-export default function Video() {
-  const [api, setApi] = useState<CarouselApi>()
-  const [current, setCurrent] = useState(0)
-  const [count, setCount] = useState(0)
-  const belowContentSelector = useSelector(
-    (state: RootState) => state.appData.data.noi_dung?.[4]
-  )
-  const videos: IVideo[] = belowContentSelector?.['dmst-videos'] ?? []
+export default async function Video() {
+  // const [api, setApi] = useState<CarouselApi>()
+  // const [current, setCurrent] = useState(0)
+  // const [count, setCount] = useState(0)
 
-  useEffect(() => {
-    if (!api) {
-      return
-    }
+  const response = await fetch(`${NEXT_PUBLIC_BASE_URL}${HOME_PATH_API}`)
+  if (!response.ok) {
+    throw new Error('Failed to fetch data')
+  }
+  const data: IApp = await response.json()
+  const belowContent: IBelowContent = data.noi_dung[4]
+  const videos: IVideo[] = belowContent['dmst-videos']
 
-    setCount(api.scrollSnapList().length)
-    setCurrent(api.selectedScrollSnap() + 1)
+  // useEffect(() => {
+  //   if (!api) {
+  //     return
+  //   }
 
-    api.on('select', () => {
-      setCurrent(api.selectedScrollSnap() + 1)
-    })
-  }, [api])
+  //   setCount(api.scrollSnapList().length)
+  //   setCurrent(api.selectedScrollSnap() + 1)
+
+  //   api.on('select', () => {
+  //     setCurrent(api.selectedScrollSnap() + 1)
+  //   })
+  // }, [api])
 
   return (
     <>
       <p className="text-xl font-bold md:text-2xl lg:text-3xl">Video</p>
       <div className="mx-auto w-[90%] p-7">
-        <Carousel setApi={setApi}>
+        <Carousel>
           <CarouselContent>
             {videos.map((video) => (
               <CarouselVideoItem key={video.id} {...video} />
@@ -48,9 +50,9 @@ export default function Video() {
           <CarouselPrevious />
           <CarouselNext />
         </Carousel>
-        <div className="text-center text-slate-400">
+        {/* <div className="text-center text-slate-400">
           Video {current} trên {count}
-        </div>
+        </div> */}
       </div>
     </>
   )

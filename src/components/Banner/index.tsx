@@ -1,14 +1,17 @@
-import { RootState } from '@/redux/store'
-import { API_PORT, API_ROOT } from '@/utils/constant'
+import { IApp } from '@/types/app'
+import { IBanner, IBannerType } from '@/types/banner'
+import { API_PORT, API_ROOT, NEXT_PUBLIC_BASE_URL } from '@/utils/constant'
+import { HOME_PATH_API } from '@/utils/paths'
 import Image from 'next/image'
-import { useSelector } from 'react-redux'
 
-export default function Banner() {
-  const bannerSelector = useSelector(
-    (state: RootState) => state.appData.data.noi_dung?.[2]
-  )
-
-  const banner = bannerSelector?.dmst_banners[0]
+export default async function Banner() {
+  const response = await fetch(`${NEXT_PUBLIC_BASE_URL}${HOME_PATH_API}`)
+  if (!response.ok) {
+    throw new Error('Failed to fetch data')
+  }
+  const data: IApp = await response.json()
+  const bannerType: IBannerType = data.noi_dung[2]
+  const banner: IBanner = bannerType.dmst_banners[0]
 
   const renderImg = () => {
     const imgPath = `${API_ROOT}:${API_PORT}${banner?.anh_banner.url}`

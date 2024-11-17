@@ -1,24 +1,31 @@
 import Post from '@/components/MainContent/Post'
 import Tag from '@/components/MainContent/Tag'
-import { RootState } from '@/redux/store'
+import { IApp } from '@/types/app'
+import { IMainContent } from '@/types/mainContent/mainContent'
 import { IPostsType, IPostType } from '@/types/mainContent/post'
 import { ITag, ITagsType } from '@/types/mainContent/tag'
 import { IPost } from '@/types/post'
+import { NEXT_PUBLIC_BASE_URL } from '@/utils/constant'
+import { HOME_PATH_API } from '@/utils/paths'
 import Link from 'next/link'
-import { useSelector } from 'react-redux'
 
-export default function MainContent() {
-  const mainContentSelector = useSelector(
-    (state: RootState) => state.appData.data.noi_dung?.[1]
-  )
+export default async function MainContent() {
+  const response = await fetch(`${NEXT_PUBLIC_BASE_URL}${HOME_PATH_API}`)
+  if (!response.ok) {
+    throw new Error('Failed to fetch data')
+  }
+  const data: IApp = await response.json()
 
-  const postsType: IPostsType | undefined =
-    mainContentSelector?.bai_viet_theo_loai
-  const postType: IPostType | undefined = postsType?.dmst_loai_bai_viets[0]
-  const posts: IPost[] | undefined = postType?.dmst_bai_viets
+  // news
+  const mainContent: IMainContent = data.noi_dung[1]
+  const postsType: IPostsType = mainContent.bai_viet_theo_loai
+  const postType: IPostType = postsType.dmst_loai_bai_viets[0]
+  const posts: IPost[] = postType.dmst_bai_viets
 
-  const tagsType: ITagsType | undefined = mainContentSelector?.tags_theo_loai
-  const tags: ITag[] | undefined = tagsType?.tags ?? []
+  // events
+  const tagsType: ITagsType = mainContent.tags_theo_loai
+  const tags: ITag[] = tagsType.tags
+  // const post: IPost[] = tags.
 
   return (
     <div className="pt-8">
@@ -32,7 +39,7 @@ export default function MainContent() {
             </p>
           </div>
           <div className="divide-y divide-solid">
-            {posts?.map((post: IPost) => <Post key={post.id} {...post} />)}
+            {posts.map((post: IPost) => <Post key={post.id} {...post} />)}
           </div>
         </div>
         <div className="sticky top-6 self-start border p-4 md:col-span-3 lg:col-span-4">
