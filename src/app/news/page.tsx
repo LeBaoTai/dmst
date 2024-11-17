@@ -54,11 +54,3 @@ export default async function NewList() {
     </div>
   )
 }
-
-const PostCard = ({ post }: { post: any }) => {
-  const imgPath = post?.anh_dai_dien
-    ? `${API_ROOT}:${API_PORT}${post.anh_dai_dien.url}`
-    : null
-
-  return <div className="flex-col border lg:col-span-3"></div>
-}
