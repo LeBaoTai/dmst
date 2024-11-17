@@ -1,20 +1,17 @@
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
-import { NEXT_PUBLIC_BASE_URL } from '@/utils/constant'
-import { POST_PATH_API } from '@/utils/paths'
-// import { useRouter } from 'next/router'
+// import { NEXT_PUBLIC_BASE_URL } from '@/utils/constant'
+// import { POST_PATH_API } from '@/utils/paths'
 
 export default async function PostDetails() {
-  // const router = useRouter()
+  // const response = await fetch(`${NEXT_PUBLIC_BASE_URL}${POST_PATH_API}`)
+  // if (!response.ok) {
+  //   throw new Error('Failed to fetch data')
+  // }
 
-  const response = await fetch(`${NEXT_PUBLIC_BASE_URL}${POST_PATH_API}`)
-  if (!response.ok) {
-    throw new Error('Failed to fetch data')
-  }
+  // const data = await response.json()
 
-  const data = await response.json()
-
-  console.log(data)
+  // console.log(data)
 
   return (
     <div className="flex h-screen flex-col">
