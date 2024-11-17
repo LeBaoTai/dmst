@@ -10,3 +10,5 @@ export const API_ROOT = 'http://116.109.42.111'
 export const API_PORT = '1337'
 
 export const DMST_ROOT_PAHT = '/api/dmst-trang-chu'
+
+export const NEXT_PUBLIC_BASE_URL = 'dmst-eta.vercel.app'
