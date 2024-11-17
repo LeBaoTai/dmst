@@ -1,27 +1,30 @@
-import { RootState } from '@/redux/store'
+import { IApp } from '@/types/app'
 import { IHeader } from '@/types/header/header'
 import { IHeaderLink } from '@/types/header/headerLink'
-import { API_PORT, API_ROOT } from '@/utils/constant'
+import { API_PORT, API_ROOT, NEXT_PUBLIC_BASE_URL } from '@/utils/constant'
+import { HOME_PATH_API } from '@/utils/paths'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useSelector } from 'react-redux'
 
-export default function Header() {
-  const headerSelector = useSelector((state: RootState) => state.appData.data)
+export default async function Header() {
+  const response = await fetch(`${NEXT_PUBLIC_BASE_URL}${HOME_PATH_API}`)
+  if (!response.ok) {
+    throw new Error('Failed to fetch data')
+  }
+  const data: IApp = await response.json()
+  const header: IHeader = data.Header
 
-  const header: IHeader | undefined = headerSelector.Header
+  const renderImg = () => {
+    const imgPath = `${API_ROOT}:${API_PORT}${header.logo.url}`
 
-  const imgPath = `${API_ROOT}:${API_PORT}${header?.logo.url}`
-
-  const renderImg = (url: string | undefined) => {
-    if (url) {
+    if (imgPath) {
       return (
         <Image
-          className="h-auto w-auto"
+          className="w-full object-contain"
           src={imgPath}
-          width={header?.logo.width}
-          height={header?.logo.height}
-          alt={header?.logo.name || 'img'}
+          width={header.logo.width}
+          height={header.logo.height}
+          alt={header.logo.name || 'img'}
         />
       )
     }
@@ -29,11 +32,9 @@ export default function Header() {
 
   return (
     <div className="grid items-center gap-4 bg-slate-100 p-4 shadow-sm md:h-16 md:grid-cols-9 md:px-7 lg:grid-cols-12 lg:px-32">
-      <div className="shrink-0 md:col-span-3">
-        {renderImg(header?.logo.url)}
-      </div>
+      <div className="shrink-0 md:col-span-3">{renderImg()}</div>
       <div className="hidden items-center justify-end gap-1 text-sm lg:col-span-7 lg:flex">
-        {header?.dmst_link_don_gians.map((link: IHeaderLink) => (
+        {header.dmst_link_don_gians.map((link: IHeaderLink) => (
           <Link
             key={link.ten}
             href={link.link}

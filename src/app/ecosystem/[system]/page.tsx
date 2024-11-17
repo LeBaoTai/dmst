@@ -1,5 +1,3 @@
-'use client'
-
 import { getEcosystemData } from '@/api/ecosystem/ecosystem'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'

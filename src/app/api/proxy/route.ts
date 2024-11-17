@@ -1,7 +1,8 @@
+import { NEXT_PUBLIC_BASE_URL } from '@/utils/constant'
 import { NextResponse } from 'next/server'
 
 export async function GET() {
-  const API_URL = 'http://116.109.42.111:1337/api/dmst-trang-chu' // Your HTTP API URL
+  const API_URL = `${NEXT_PUBLIC_BASE_URL}/api/dmst-trang-chu` // Your HTTP API URL
 
   try {
     const response = await fetch(API_URL, {

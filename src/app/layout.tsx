@@ -1,4 +1,3 @@
-import { AppProvider } from '@/redux/providers/AppProvider'
 import { SQUARE } from '@/utils/constant'
 import type { Metadata } from 'next'
 import './globals.css'
@@ -14,10 +13,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <AppProvider>
-      <html lang="en" suppressHydrationWarning>
-        <body className={`${SQUARE.className} antialiased`}>{children}</body>
-      </html>
-    </AppProvider>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${SQUARE.className} antialiased`}>{children}</body>
+    </html>
   )
 }

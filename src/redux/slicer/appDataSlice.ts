@@ -1,6 +1,6 @@
 // src/features/appDataSlice.ts
-import { getAppData } from '@/api/app/app'
 import { IApp } from '@/types/app'
+import { HOME_PATH_API } from '@/utils/paths'
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 interface AppDataState {
@@ -15,7 +15,17 @@ const initialState: AppDataState = {
   error: null
 }
 
-export const fetchAppData = createAsyncThunk('appData/fetchAppData', getAppData)
+export const fetchAppData = createAsyncThunk(
+  'appData/fetchAppData',
+  async () => {
+    const response = await fetch(HOME_PATH_API)
+    if (!response.ok) {
+      throw new Error(`Failed to fetch data: ${response.statusText}`)
+    }
+    const data = await response.json()
+    return data
+  }
+)
 
 const appDataSlice = createSlice({
   name: 'appData',
