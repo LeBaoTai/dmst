@@ -7,9 +7,15 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export default async function Header() {
-  const response = await fetch(`${NEXT_PUBLIC_BASE_URL}${HOME_PATH_API}`)
+  const API_URL = `${NEXT_PUBLIC_BASE_URL}/api/dmst-trang-chu`
+
+  const response = await fetch(API_URL, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  })
+
   if (!response.ok) {
-    throw new Error('Failed to fetch data')
+    throw new Error(`Failed to fetch API: ${response.statusText}`)
   }
   const data: IApp = await response.json()
   const header: IHeader = data.Header

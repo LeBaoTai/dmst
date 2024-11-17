@@ -10,9 +10,15 @@ import { HOME_PATH_API } from '@/utils/paths'
 import Link from 'next/link'
 
 export default async function MainContent() {
-  const response = await fetch(`${NEXT_PUBLIC_BASE_URL}${HOME_PATH_API}`)
+  const API_URL = `${NEXT_PUBLIC_BASE_URL}/api/dmst-trang-chu`
+
+  const response = await fetch(API_URL, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  })
+
   if (!response.ok) {
-    throw new Error('Failed to fetch data')
+    throw new Error(`Failed to fetch API: ${response.statusText}`)
   }
   const data: IApp = await response.json()
 
@@ -39,7 +45,9 @@ export default async function MainContent() {
             </p>
           </div>
           <div className="divide-y divide-solid">
-            {posts.map((post: IPost) => <Post key={post.id} {...post} />)}
+            {posts.map((post: IPost) => (
+              <Post key={post.id} {...post} />
+            ))}
           </div>
         </div>
         <div className="sticky top-6 self-start border p-4 md:col-span-3 lg:col-span-4">

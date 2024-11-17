@@ -1,17 +1,29 @@
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
+import { API_ROOT, API_PORT } from '@/utils/constant'
+import { useRouter } from 'next/navigation'
 // import { NEXT_PUBLIC_BASE_URL } from '@/utils/constant'
 // import { POST_PATH_API } from '@/utils/paths'
 
-export default async function PostDetails() {
-  // const response = await fetch(`${NEXT_PUBLIC_BASE_URL}${POST_PATH_API}`)
-  // if (!response.ok) {
-  //   throw new Error('Failed to fetch data')
-  // }
+export default async function PostDetails(props: any) {
+  const params = props.params
+  const { id } = params
+  const postPath = `${API_ROOT}:${API_PORT}${'/api/dmst-bai-viets/slug/'}${id}`
+  console.log(postPath)
+  const response = await fetch(postPath, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    mode: 'no-cors'
+  })
 
-  // const data = await response.json()
+  if (!response.ok) {
+    throw new Error(`Failed to fetch API: ${response.statusText}`)
+  }
 
-  // console.log(data)
+  const data = await response.json()
+  console.log(data)
 
   return (
     <div className="flex h-screen flex-col">

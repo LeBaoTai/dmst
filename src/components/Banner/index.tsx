@@ -3,12 +3,20 @@ import { IBanner, IBannerType } from '@/types/banner'
 import { API_PORT, API_ROOT, NEXT_PUBLIC_BASE_URL } from '@/utils/constant'
 import { HOME_PATH_API } from '@/utils/paths'
 import Image from 'next/image'
+import { NextResponse } from 'next/server'
 
 export default async function Banner() {
-  const response = await fetch(`${NEXT_PUBLIC_BASE_URL}${HOME_PATH_API}`)
+  const API_URL = `${NEXT_PUBLIC_BASE_URL}/api/dmst-trang-chu`
+
+  const response = await fetch(API_URL, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  })
+
   if (!response.ok) {
-    throw new Error('Failed to fetch data')
+    throw new Error(`Failed to fetch API: ${response.statusText}`)
   }
+
   const data: IApp = await response.json()
   const bannerType: IBannerType = data.noi_dung[2]
   const banner: IBanner = bannerType.dmst_banners[0]
