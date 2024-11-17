@@ -1,7 +1,6 @@
 import FooterLink from '@/components/Footer/FooterLink'
 import { RootState } from '@/redux/store'
 import { IFooterLink } from '@/types/footer/footerLink'
-import Link from 'next/link'
 import { useSelector } from 'react-redux'
 
 export default function Footer() {

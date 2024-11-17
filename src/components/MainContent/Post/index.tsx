@@ -1,8 +1,7 @@
 import { IPost } from '@/types/post'
-import { API_ROOT, API_PORT } from '@/utils/constant'
+import { API_PORT, API_ROOT } from '@/utils/constant'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
 
 export default function Post(post: IPost) {
   const renderImg = () => {

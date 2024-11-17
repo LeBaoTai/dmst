@@ -1,7 +1,7 @@
 import Post from '@/components/Tags/Post'
 import { RootState } from '@/redux/store'
 import { IPost } from '@/types/post'
-import { ITag, ITags } from '@/types/tags/tags'
+import { ITag } from '@/types/tags/tags'
 import { useSelector } from 'react-redux'
 
 export default function Tags() {

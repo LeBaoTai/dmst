@@ -1,10 +1,6 @@
 import QuicklyImg from '@/components/BelowContent/QuicklyRead/QuicklyImg'
 import { RootState } from '@/redux/store'
-import { IQuicklyImg, IQuiclyRead } from '@/types/belowContent/quicklyRead'
-import { API_ROOT, API_PORT } from '@/utils/constant'
-import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
+import { IQuicklyImg } from '@/types/belowContent/quicklyRead'
 import { useSelector } from 'react-redux'
 
 export default function QuicklyRead() {

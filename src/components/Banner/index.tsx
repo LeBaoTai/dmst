@@ -1,5 +1,4 @@
 import { RootState } from '@/redux/store'
-import { IBanner } from '@/types/banner'
 import { API_PORT, API_ROOT } from '@/utils/constant'
 import Image from 'next/image'
 import { useSelector } from 'react-redux'

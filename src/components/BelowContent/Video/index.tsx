@@ -3,15 +3,13 @@
 import CarouselVideoItem from '@/components/BelowContent/Video/CarouselVideoItem'
 import {
   Carousel,
+  CarouselApi,
   CarouselContent,
-  CarouselItem,
-  CarouselPrevious,
   CarouselNext,
-  CarouselApi
+  CarouselPrevious
 } from '@/components/ui/carousel'
 import { RootState } from '@/redux/store'
 import { IVideo } from '@/types/belowContent/video'
-import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 

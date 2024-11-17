@@ -1,9 +1,7 @@
-import { ITag } from '@/types/mainContent/tag'
 import { IPost } from '@/types/post'
 import { API_PORT, API_ROOT } from '@/utils/constant'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
 
 export default function Tag(post: IPost) {
   const renderImg = () => {
