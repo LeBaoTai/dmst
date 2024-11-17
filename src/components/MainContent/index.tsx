@@ -18,7 +18,7 @@ export default function MainContent() {
   const posts: IPost[] | undefined = postType?.dmst_bai_viets
 
   const tagsType: ITagsType | undefined = mainContentSelector?.tags_theo_loai
-  const tags: ITag[] | undefined = tagsType?.tags
+  const tags: ITag[] | undefined = tagsType?.tags ?? []
 
   return (
     <div className="pt-8">

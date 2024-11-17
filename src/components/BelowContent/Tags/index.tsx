@@ -9,10 +9,10 @@ export default function Tags() {
     (state: RootState) => state.appData.data.noi_dung?.[4].tags
   )
 
-  const tags: ITag[] | undefined = tagsSeletor?.dmst_tags
+  const tags: ITag[] = tagsSeletor?.dmst_tags ?? []
 
   return (
-    <div className="grid gap-4 md:grid-cols-2 md:grid-rows-2 pt-4">
+    <div className="grid gap-4 pt-4 md:grid-cols-2 md:grid-rows-2">
       <div className="">
         <p className="border-b border-slate-600 font-bold md:text-xl">
           {tags[0].tag}

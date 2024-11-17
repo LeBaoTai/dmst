@@ -9,7 +9,7 @@ export default function Tags() {
     (state: RootState) => state.appData.data.noi_dung?.[3]
   )
 
-  const tags: ITag[] | undefined = tagSelector?.dmst_tags
+  const tags: ITag[] = tagSelector?.dmst_tags ?? []
 
   return (
     <div className="pt-4">

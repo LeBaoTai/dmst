@@ -20,7 +20,7 @@ export default function Video() {
   const belowContentSelector = useSelector(
     (state: RootState) => state.appData.data.noi_dung?.[4]
   )
-  const videos: IVideo[] = belowContentSelector?.['dmst-videos']
+  const videos: IVideo[] = belowContentSelector?.['dmst-videos'] ?? []
 
   useEffect(() => {
     if (!api) {
