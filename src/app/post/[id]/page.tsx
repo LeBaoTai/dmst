@@ -1,7 +1,6 @@
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import { API_ROOT, API_PORT } from '@/utils/constant'
-import { useRouter } from 'next/navigation'
 // import { NEXT_PUBLIC_BASE_URL } from '@/utils/constant'
 // import { POST_PATH_API } from '@/utils/paths'
 

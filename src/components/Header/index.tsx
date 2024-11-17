@@ -2,7 +2,7 @@ import { IApp } from '@/types/app'
 import { IHeader } from '@/types/header/header'
 import { IHeaderLink } from '@/types/header/headerLink'
 import { API_PORT, API_ROOT, NEXT_PUBLIC_BASE_URL } from '@/utils/constant'
-import { HOME_PATH_API } from '@/utils/paths'
+// import { HOME_PATH_API } from '@/utils/paths'
 import Image from 'next/image'
 import Link from 'next/link'
 

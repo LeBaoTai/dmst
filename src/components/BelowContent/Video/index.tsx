@@ -1,4 +1,3 @@
-
 import CarouselVideoItem from '@/components/BelowContent/Video/CarouselVideoItem'
 import {
   Carousel,
@@ -10,7 +9,7 @@ import { IApp } from '@/types/app'
 import { IBelowContent } from '@/types/belowContent/belowContent'
 import { IVideo } from '@/types/belowContent/video'
 import { NEXT_PUBLIC_BASE_URL } from '@/utils/constant'
-import { HOME_PATH_API } from '@/utils/paths'
+// import { HOME_PATH_API } from '@/utils/paths'
 
 export default async function Video() {
   // const [api, setApi] = useState<CarouselApi>()

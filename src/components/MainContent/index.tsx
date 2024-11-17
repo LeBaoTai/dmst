@@ -6,7 +6,7 @@ import { IPostsType, IPostType } from '@/types/mainContent/post'
 import { ITag, ITagsType } from '@/types/mainContent/tag'
 import { IPost } from '@/types/post'
 import { NEXT_PUBLIC_BASE_URL } from '@/utils/constant'
-import { HOME_PATH_API } from '@/utils/paths'
+// import { HOME_PATH_API } from '@/utils/paths'
 import Link from 'next/link'
 
 export default async function MainContent() {
