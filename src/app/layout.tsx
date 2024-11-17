@@ -16,9 +16,6 @@ export default function RootLayout({
   return (
     <AppProvider>
       <html lang="en" suppressHydrationWarning>
-        <meta
-          http-equiv="Content-Security-Policy"
-          content="upgrade-insecure-requests"></meta>
         <body className={`${SQUARE.className} antialiased`}>{children}</body>
       </html>
     </AppProvider>
