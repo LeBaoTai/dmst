@@ -8,7 +8,7 @@ import {
   CarouselPrevious,
   CarouselNext,
   CarouselApi
-} from '@/components/ui/Carousel'
+} from '@/components/ui/carousel'
 import { RootState } from '@/redux/store'
 import { IVideo } from '@/types/belowContent/video'
 import Image from 'next/image'

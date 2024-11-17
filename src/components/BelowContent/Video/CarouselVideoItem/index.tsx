@@ -1,4 +1,4 @@
-import { CarouselItem } from '@/components/ui/Carousel'
+import { CarouselItem } from '@/components/ui/carousel'
 import { IVideo } from '@/types/belowContent/video'
 
 export default function CarouselVideoItem(video: IVideo) {
