@@ -24,8 +24,10 @@ export default async function Footer() {
       <div className="col-span-1 flex flex-col justify-between">
         <p className="font-bold md:text-lg lg:text-xl">{footer.ten_trang}</p>
         <p className="md:text-sm lg:text-base">{footer.dia_chi}</p>
-        <p className="md:text-sm lg:text-base">{footer.so_dien_thoai}</p>
-        <p className="md:text-sm lg:text-base">{footer.email}</p>
+        <p className="md:text-sm lg:text-base">
+          Điện thoại: {footer.so_dien_thoai}
+        </p>
+        <p className="md:text-sm lg:text-base">Email: {footer.email}</p>
       </div>
       {/* right side */}
       <div className="col-span-1 hidden flex-col items-end justify-between lg:flex">

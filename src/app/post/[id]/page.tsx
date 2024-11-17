@@ -8,7 +8,6 @@ export default async function PostDetails(props: any) {
   const params = props.params
   const { id } = params
   const postPath = `${API_ROOT}:${API_PORT}${'/api/dmst-bai-viets/slug/'}${id}`
-  console.log(postPath)
   const response = await fetch(postPath, {
     method: 'GET',
     headers: {
@@ -22,7 +21,6 @@ export default async function PostDetails(props: any) {
   }
 
   const data = await response.json()
-  console.log(data)
 
   return (
     <div className="flex h-screen flex-col">
@@ -30,8 +28,8 @@ export default async function PostDetails(props: any) {
         <Header />
       </div>
       <div className="flex-grow p-4 py-5 md:px-7 lg:px-32">
-        {/* <p className="text-center text-xl font-bold">{data.ten_bai_viet}</p>
-        <p className="text-center">{data.noi_dung_bai_viet.mo_ta}</p> */}
+        <p className="text-center text-xl font-bold">{data.ten_bai_viet}</p>
+        <p className="text-center">{data.noi_dung_bai_viet.mo_ta}</p>
       </div>
       <div className="">
         <Footer />
