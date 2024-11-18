@@ -6,7 +6,8 @@ export const SQUARE = localFont({
   weight: '100 900'
 })
 
-export const API_ROOT = 'http://116.109.42.111'
+// export const API_ROOT = 'http://116.109.42.111'
+export const API_ROOT = 'http://172.30.10.85'
 export const API_PORT = '1337'
 
 export const DMST_ROOT_PAHT = '/api/dmst-trang-chu'

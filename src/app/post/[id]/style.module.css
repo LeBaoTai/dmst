@@ -1,0 +1,3 @@
+.container p {
+  @apply text-justify leading-relaxed place-items-center; /* Áp dụng các lớp Tailwind */
+}
