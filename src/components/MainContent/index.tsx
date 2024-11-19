@@ -6,7 +6,6 @@ import { IPostsType, IPostType } from '@/types/mainContent/post'
 import { ITag, ITagsType } from '@/types/mainContent/tag'
 import { IPost } from '@/types/post'
 import { NEXT_PUBLIC_BASE_URL } from '@/utils/constant'
-// import { HOME_PATH_API } from '@/utils/paths'
 import Link from 'next/link'
 
 export default async function MainContent() {
@@ -31,7 +30,6 @@ export default async function MainContent() {
   // events
   const tagsType: ITagsType = mainContent.tags_theo_loai
   const tags: ITag[] = tagsType.tags
-  // const post: IPost[] = tags.
 
   return (
     <div className="pt-8">
@@ -41,7 +39,7 @@ export default async function MainContent() {
         <div className="md:col-span-6 lg:col-span-8">
           <div className="font-lora border-t-[1px] border-slate-300 text-xl font-bold text-slate-700 md:text-2xl lg:text-3xl">
             <p className="pt-3">
-              <Link href={`/news`}>Tin Tức</Link>
+              <Link href={`/news`}>{postType.loai}</Link>
             </p>
           </div>
           <div className="divide-y divide-solid">
@@ -61,7 +59,9 @@ export default async function MainContent() {
       {/* su kien */}
       <div className="">
         <div className="font-lora border-t-[1px] border-slate-300 pt-4 text-xl font-bold text-slate-700 md:text-2xl lg:text-3xl">
-          <p className="">Sự kiện</p>
+          <p className="">
+            <Link href={`/events`}>{tagsType.loai}</Link>
+          </p>
         </div>
         <div className="grid gap-5 py-6 md:grid-cols-9 lg:grid-cols-12">
           <div className="md:col-span-4 lg:col-span-6">

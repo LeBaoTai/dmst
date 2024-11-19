@@ -1,6 +1,7 @@
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import { API_ROOT, API_PORT } from '@/utils/constant'
+import { notFound } from 'next/navigation'
 import React from 'react'
 
 export default async function EcosystemDetails(props: any) {
@@ -11,12 +12,11 @@ export default async function EcosystemDetails(props: any) {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
-    },
-    mode: 'no-cors'
+    }
   })
 
   if (!response.ok) {
-    throw new Error(`Failed to fetch API: ${response.statusText}`)
+    notFound()
   }
 
   const data = await response.json()

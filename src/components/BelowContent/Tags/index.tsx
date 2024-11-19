@@ -3,7 +3,7 @@ import { IApp } from '@/types/app'
 import { IBelowContent, ITag, ITags } from '@/types/belowContent/belowContent'
 import { IPost } from '@/types/post'
 import { NEXT_PUBLIC_BASE_URL } from '@/utils/constant'
-// import { HOME_PATH_API } from '@/utils/paths'
+import Link from 'next/link'
 
 export default async function Tags() {
   const API_URL = `${NEXT_PUBLIC_BASE_URL}/api/dmst-trang-chu`
@@ -26,7 +26,7 @@ export default async function Tags() {
     <div className="grid gap-4 pt-4 md:grid-cols-2 md:grid-rows-2">
       <div className="">
         <p className="border-b border-slate-600 font-bold md:text-xl">
-          {tags[0].tag}
+          <Link href={`/tags/${tags[0].slug}`}>{tags[0].tag}</Link>
         </p>
         {tags[0].dmst_bai_viets.map((post: IPost) => (
           <Post key={post.id} {...post} />
@@ -34,7 +34,7 @@ export default async function Tags() {
       </div>
       <div className="">
         <p className="border-b border-slate-600 font-bold md:text-xl">
-          {tags[1].tag}
+          <Link href={`/tags/${tags[1].slug}`}>{tags[1].tag}</Link>
         </p>
         {tags[1].dmst_bai_viets.map((post: IPost) => (
           <Post key={post.id} {...post} />
@@ -42,17 +42,16 @@ export default async function Tags() {
       </div>
       <div className="">
         <p className="border-b border-slate-600 font-bold md:text-xl">
-          {tags[2].tag}
+          <Link href={`/tags/${tags[2].slug}`}>{tags[2].tag}</Link>
         </p>
         {tags[2].dmst_bai_viets.map((post: IPost) => (
           <Post key={post.id} {...post} />
         ))}
       </div>
       <div className="">
-        <p className="border-b border-slate-600 font-bold md:text-xl">
-          {tags[3].tag}
+        <p className="flex border-b border-slate-600 font-bold md:text-xl">
+          <Link href={`/tags/${tags[3].slug}`}>{tags[3].tag}</Link>
         </p>
-
         {tags[3].dmst_bai_viets.map((post: IPost) => (
           <Post key={post.id} {...post} />
         ))}

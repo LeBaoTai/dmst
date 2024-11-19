@@ -2,7 +2,6 @@ import { IApp } from '@/types/app'
 import { IHeader } from '@/types/header/header'
 import { IHeaderLink } from '@/types/header/headerLink'
 import { API_PORT, API_ROOT, NEXT_PUBLIC_BASE_URL } from '@/utils/constant'
-// import { HOME_PATH_API } from '@/utils/paths'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -26,7 +25,7 @@ export default async function Header() {
     if (imgPath) {
       return (
         <Image
-          className="w-full object-contain"
+          className="h-auto w-auto object-contain"
           src={imgPath}
           width={header.logo.width}
           height={header.logo.height}
@@ -37,8 +36,10 @@ export default async function Header() {
   }
 
   return (
-    <div className="grid items-center gap-4 bg-slate-100 p-4 shadow-sm md:h-16 md:grid-cols-9 md:px-7 lg:grid-cols-12 lg:px-32">
-      <div className="shrink-0 md:col-span-3">{renderImg()}</div>
+    <div className="grid items-center gap-4 bg-slate-100 p-4 shadow-sm md:h-20 md:grid-cols-9 md:px-7 lg:grid-cols-12 lg:px-32">
+      <div className="md:col-span-3">
+        <Link href={`/`}>{renderImg()}</Link>
+      </div>
       <div className="hidden items-center justify-end gap-1 text-sm lg:col-span-7 lg:flex">
         {header.dmst_link_don_gians.map((link: IHeaderLink) => (
           <Link

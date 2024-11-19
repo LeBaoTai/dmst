@@ -2,7 +2,6 @@ import FooterLink from '@/components/Footer/FooterLink'
 import { IApp } from '@/types/app'
 import { IFooter } from '@/types/footer/footer'
 import { NEXT_PUBLIC_BASE_URL } from '@/utils/constant'
-// import { HOME_PATH_API } from '@/utils/paths'
 
 export default async function Footer() {
   const API_URL = `${NEXT_PUBLIC_BASE_URL}/api/dmst-trang-chu`

@@ -1,9 +1,10 @@
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import { API_ROOT, API_PORT } from '@/utils/constant'
-// import { NEXT_PUBLIC_BASE_URL } from '@/utils/constant'
-// import { POST_PATH_API } from '@/utils/paths'
 import styles from './style.module.css'
+import DOMPurify from 'isomorphic-dompurify'
+import Link from 'next/link'
+import { notFound } from 'next/navigation'
 
 export default async function PostDetails(props: any) {
   const params = props.params
@@ -13,12 +14,11 @@ export default async function PostDetails(props: any) {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
-    },
-    mode: 'no-cors'
+    }
   })
 
   if (!response.ok) {
-    throw new Error(`Failed to fetch API: ${response.statusText}`)
+    notFound()
   }
 
   const data = await response.json()
@@ -33,11 +33,19 @@ export default async function PostDetails(props: any) {
           <div className="flex justify-between">
             <div>
               <span className="text-red-500">
-                {data.dmst_loai_bai_viets[0].loai}
+                <Link href="/news">{data.dmst_loai_bai_viets[0].loai}</Link>
               </span>
-              {'>' + data.dmst_tags[0]?.tag || ''}
+              <span>{'>'}</span>
+              <span>
+                <Link href={`/tags/${data.dmst_tags[0].slug || 'none'}`}>
+                  {data.dmst_tags[0].tag || 'Không có'}
+                </Link>
+              </span>
             </div>
-            <span>{data.ngay_dang}</span>
+            <div className="">
+              <span>{data.noi_dung_bai_viet.tac_gia + ' - '}</span>
+              <span>{data.ngay_dang}</span>
+            </div>
           </div>
           <p className="py-4 text-left text-3xl font-bold">
             {data.ten_bai_viet}
@@ -46,7 +54,7 @@ export default async function PostDetails(props: any) {
           <div
             className={`flex-row ${styles.container}`}
             dangerouslySetInnerHTML={{
-              __html: data.noi_dung_bai_viet.noi_dung
+              __html: DOMPurify.sanitize(data.noi_dung_bai_viet?.noi_dung || '')
             }}></div>
         </div>
         <div className="sticky top-6 self-start border p-4 md:col-span-3 lg:col-span-4">

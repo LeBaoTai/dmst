@@ -5,7 +5,6 @@ import MainContent from '@/components/MainContent'
 import Tags from '@/components/Tags'
 import { IApp } from '@/types/app'
 import { NEXT_PUBLIC_BASE_URL } from '@/utils/constant'
-// import { HOME_PATH_API } from '@/utils/paths'
 
 export default async function Body() {
   const API_URL = `${NEXT_PUBLIC_BASE_URL}/api/dmst-trang-chu`

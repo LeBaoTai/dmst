@@ -3,7 +3,7 @@ import { IApp } from '@/types/app'
 import { IPost } from '@/types/post'
 import { ITag, ITags } from '@/types/tags/tags'
 import { NEXT_PUBLIC_BASE_URL } from '@/utils/constant'
-// import { HOME_PATH_API } from '@/utils/paths'
+import Link from 'next/link'
 
 export default async function Tags() {
   const API_URL = `${NEXT_PUBLIC_BASE_URL}/api/dmst-trang-chu`
@@ -25,7 +25,9 @@ export default async function Tags() {
     <div className="pt-4">
       <div className="grid gap-4 md:grid-cols-9 lg:grid-cols-12">
         <div className="md:col-span-3 lg:col-span-4">
-          <p className="text-left text-lg underline">{tags[0].tag}</p>
+          <p className="text-left text-lg underline">
+            <Link href={`/tags/${tags[0].slug}`}>{tags[0].tag}</Link>
+          </p>
           <div className="divide-y">
             {tags[0].dmst_bai_viets.map((post: IPost) => (
               <Post key={post.id} {...post} />
@@ -33,7 +35,9 @@ export default async function Tags() {
           </div>
         </div>
         <div className="md:col-span-3 lg:col-span-4">
-          <p className="text-left text-lg underline">{tags[1].tag}</p>
+          <p className="text-left text-lg underline">
+            <Link href={`/tags/${tags[1].slug}`}>{tags[1].tag}</Link>
+          </p>
           <div className="divide-y">
             {tags[1].dmst_bai_viets.map((post: IPost) => (
               <Post key={post.id} {...post} />
@@ -41,7 +45,9 @@ export default async function Tags() {
           </div>
         </div>
         <div className="md:col-span-3 lg:col-span-4">
-          <p className="text-left text-lg underline">{tags[2].tag}</p>
+          <p className="text-left text-lg underline">
+            <Link href={`/tags/${tags[2].slug}`}>{tags[2].tag}</Link>
+          </p>
           <div className="divide-y">
             {tags[2].dmst_bai_viets.map((post: IPost) => (
               <Post key={post.id} {...post} />

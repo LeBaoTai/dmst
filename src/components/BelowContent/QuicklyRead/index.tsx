@@ -3,7 +3,7 @@ import { IApp } from '@/types/app'
 import { IBelowContent } from '@/types/belowContent/belowContent'
 import { IQuicklyImg, IQuiclyRead } from '@/types/belowContent/quicklyRead'
 import { NEXT_PUBLIC_BASE_URL } from '@/utils/constant'
-// import { HOME_PATH_API } from '@/utils/paths'
+import Link from 'next/link'
 
 export default async function QuicklyRead() {
   const API_URL = `${NEXT_PUBLIC_BASE_URL}/api/dmst-trang-chu`
@@ -22,7 +22,9 @@ export default async function QuicklyRead() {
 
   return (
     <>
-      <p className="text-xl font-bold md:text-2xl lg:text-3xl">Đọc nhanh</p>
+      <p className="text-xl font-bold md:text-2xl lg:text-3xl">
+        <Link href={`/quicklyReads`}>Đọc nhanh</Link>
+      </p>
       <div className="space-y-2 py-7">
         {quicklyReads[0].anh_doc_nhanh.map((i: IQuicklyImg) => (
           <QuicklyImg key={i.id} {...i} />

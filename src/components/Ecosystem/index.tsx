@@ -3,7 +3,6 @@ import { IApp } from '@/types/app'
 import { IEcosystem } from '@/types/ecosystem/ecosystem'
 import { ISystem } from '@/types/ecosystem/system'
 import { NEXT_PUBLIC_BASE_URL } from '@/utils/constant'
-// import { HOME_PATH_API } from '@/utils/paths'
 
 export default async function Ecosystem() {
   const API_URL = `${NEXT_PUBLIC_BASE_URL}/api/dmst-trang-chu`

@@ -9,6 +9,7 @@ import { IApp } from '@/types/app'
 import { IBelowContent } from '@/types/belowContent/belowContent'
 import { IVideo } from '@/types/belowContent/video'
 import { NEXT_PUBLIC_BASE_URL } from '@/utils/constant'
+import Link from 'next/link'
 // import { HOME_PATH_API } from '@/utils/paths'
 
 export default async function Video() {
@@ -45,7 +46,9 @@ export default async function Video() {
 
   return (
     <>
-      <p className="text-xl font-bold md:text-2xl lg:text-3xl">Video</p>
+      <p className="text-xl font-bold md:text-2xl lg:text-3xl">
+        <Link href={`/videos`}>Video</Link>
+      </p>
       <div className="mx-auto w-[90%] p-7">
         <Carousel>
           <CarouselContent>

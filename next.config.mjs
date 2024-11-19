@@ -22,9 +22,9 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'images.unsplash.com',
+        hostname: 'www.youtube.com',
         port: '',
-        pathname: '/**'
+        pathname: '/embed'
       }
     ]
   }

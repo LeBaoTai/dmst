@@ -1,7 +1,6 @@
 import { IQuicklyImg } from '@/types/belowContent/quicklyRead'
 import { API_PORT, API_ROOT } from '@/utils/constant'
 import Image from 'next/image'
-import Link from 'next/link'
 
 export default function QuicklyImg(i: IQuicklyImg) {
   const renderImg = () => {
@@ -19,9 +18,5 @@ export default function QuicklyImg(i: IQuicklyImg) {
       )
     }
   }
-  return (
-    <div className="">
-      <Link href={'#'}>{renderImg()}</Link>
-    </div>
-  )
+  return <div className="">{renderImg()}</div>
 }
