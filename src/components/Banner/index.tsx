@@ -1,7 +1,6 @@
 import { IApp } from '@/types/app'
 import { IBanner, IBannerType } from '@/types/banner'
-import { API_PORT, API_ROOT, NEXT_PUBLIC_BASE_URL } from '@/utils/constant'
-// import { HOME_PATH_API } from '@/utils/paths'
+import { NEXT_PUBLIC_BASE_URL } from '@/utils/constant'
 import Image from 'next/image'
 
 export default async function Banner() {
@@ -21,7 +20,7 @@ export default async function Banner() {
   const banner: IBanner = bannerType.dmst_banners[0]
 
   const renderImg = () => {
-    const imgPath = `${API_ROOT}:${API_PORT}${banner?.anh_banner.url}`
+    const imgPath = `${NEXT_PUBLIC_BASE_URL}${banner?.anh_banner.url}`
 
     if (imgPath) {
       return (

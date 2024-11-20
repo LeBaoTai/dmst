@@ -65,7 +65,9 @@ export default async function MainContent() {
         </div>
         <div className="grid gap-5 py-6 md:grid-cols-9 lg:grid-cols-12">
           <div className="md:col-span-4 lg:col-span-6">
-            <p className="font-bold text-red-600 md:text-left">{tags[0].tag}</p>
+            <p className="font-bold text-red-600 md:text-left">
+              <Link href={`/tags/${tags[0].slug}`}>{tags[0].tag}</Link>
+            </p>
             <div className="divide-y">
               {tags[0].bai_viet.map((post: IPost) => (
                 <Tag key={post.id} {...post} />
@@ -73,7 +75,9 @@ export default async function MainContent() {
             </div>
           </div>
           <div className="md:col-span-4 md:col-start-6 lg:col-span-6">
-            <p className="font-bold text-red-600 md:text-left">{tags[1].tag}</p>
+            <p className="font-bold text-red-600 md:text-left">
+              <Link href={`/tags/${tags[1].slug}`}>{tags[1].tag}</Link>
+            </p>
             <div className="divide-y">
               {tags[1].bai_viet.map((post: IPost) => (
                 <Tag key={post.id} {...post} />

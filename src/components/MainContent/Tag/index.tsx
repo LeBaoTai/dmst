@@ -1,11 +1,11 @@
 import { IPost } from '@/types/post'
-import { API_PORT, API_ROOT } from '@/utils/constant'
+import { NEXT_PUBLIC_BASE_URL } from '@/utils/constant'
 import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Tag(post: IPost) {
   const renderImg = () => {
-    const imgPath = `${API_ROOT}:${API_PORT}${post.anh_dai_dien.url}`
+    const imgPath = `${NEXT_PUBLIC_BASE_URL}${post.anh_dai_dien.url}`
 
     if (imgPath) {
       return (

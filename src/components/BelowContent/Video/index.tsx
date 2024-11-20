@@ -10,7 +10,6 @@ import { IBelowContent } from '@/types/belowContent/belowContent'
 import { IVideo } from '@/types/belowContent/video'
 import { NEXT_PUBLIC_BASE_URL } from '@/utils/constant'
 import Link from 'next/link'
-// import { HOME_PATH_API } from '@/utils/paths'
 
 export default async function Video() {
   // const [api, setApi] = useState<CarouselApi>()

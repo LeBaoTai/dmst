@@ -1,11 +1,11 @@
 import { ISystem } from '@/types/ecosystem/system'
-import { API_ROOT, API_PORT } from '@/utils/constant'
+import { NEXT_PUBLIC_BASE_URL } from '@/utils/constant'
 import Image from 'next/image'
 import Link from 'next/link'
 
 export default function System(hst: ISystem) {
   const renderImg = () => {
-    const imgPath = `${API_ROOT}:${API_PORT}${hst?.anh_dai_dien.url}`
+    const imgPath = `${NEXT_PUBLIC_BASE_URL}${hst?.anh_dai_dien.url}`
 
     if (imgPath) {
       return (

@@ -22,7 +22,6 @@ export default async function PostDetails(props: any) {
   }
 
   const data = await response.json()
-  console.log(data)
 
   return (
     <div className="flex h-screen flex-col">

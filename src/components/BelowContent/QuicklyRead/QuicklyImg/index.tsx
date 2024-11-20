@@ -1,10 +1,10 @@
 import { IQuicklyImg } from '@/types/belowContent/quicklyRead'
-import { API_PORT, API_ROOT } from '@/utils/constant'
+import { NEXT_PUBLIC_BASE_URL } from '@/utils/constant'
 import Image from 'next/image'
 
 export default function QuicklyImg(i: IQuicklyImg) {
   const renderImg = () => {
-    const imgPath = `${API_ROOT}:${API_PORT}${i.url}`
+    const imgPath = `${NEXT_PUBLIC_BASE_URL}${i.url}`
 
     if (imgPath) {
       return (
