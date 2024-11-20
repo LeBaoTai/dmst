@@ -22,6 +22,7 @@ export default async function PostDetails(props: any) {
   }
 
   const data = await response.json()
+  console.log(data)
 
   return (
     <div className="flex h-screen flex-col">
@@ -37,8 +38,8 @@ export default async function PostDetails(props: any) {
               </span>
               <span>{'>'}</span>
               <span>
-                <Link href={`/tags/${data.dmst_tags[0].slug || 'none'}`}>
-                  {data.dmst_tags[0].tag || 'Không có'}
+                <Link href={`/tags/${data.dmst_tags[0]?.slug || 'none'}`}>
+                  {data.dmst_tags[0]?.tag || 'Không có'}
                 </Link>
               </span>
             </div>
