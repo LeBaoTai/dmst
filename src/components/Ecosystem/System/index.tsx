@@ -6,7 +6,6 @@ import Link from 'next/link'
 export default function System(hst: ISystem) {
   const renderImg = () => {
     const imgPath = `${NEXT_PUBLIC_BASE_URL}${hst?.anh_dai_dien.url}`
-
     if (imgPath) {
       return (
         <Image

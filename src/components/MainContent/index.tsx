@@ -60,7 +60,7 @@ export default async function MainContent() {
       <div className="">
         <div className="font-lora border-t-[1px] border-slate-300 pt-4 text-xl font-bold text-slate-700 md:text-2xl lg:text-3xl">
           <p className="">
-            <Link href={`/events`}>{tagsType.loai}</Link>
+            <Link href={`/events`}>{tagsType.loai.loai}</Link>
           </p>
         </div>
         <div className="grid gap-5 py-6 md:grid-cols-9 lg:grid-cols-12">

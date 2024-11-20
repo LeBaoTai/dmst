@@ -1,13 +1,13 @@
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
-import { API_PORT, API_ROOT } from '@/utils/constant'
+import { NEXT_PUBLIC_BASE_URL } from '@/utils/constant'
 
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 export default async function QuicklyReadList() {
-  const quicklyReadsPath = `${API_ROOT}:${API_PORT}${'/api/dmst-doc-nhanhs'}`
+  const quicklyReadsPath = `${NEXT_PUBLIC_BASE_URL}${'/api/dmst-doc-nhanhs'}`
   const response = await fetch(quicklyReadsPath, {
     method: 'GET',
     headers: {
@@ -24,7 +24,7 @@ export default async function QuicklyReadList() {
   const list: any[] = data.data
 
   const renderImg = (post: any) => {
-    const imgPath = `${API_ROOT}:${API_PORT}${post.url}`
+    const imgPath = `${NEXT_PUBLIC_BASE_URL}${post.url}`
 
     if (imgPath) {
       return (

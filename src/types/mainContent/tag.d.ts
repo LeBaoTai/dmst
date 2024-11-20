@@ -8,6 +8,10 @@ interface ITag {
 
 export interface ITagsType {
   id: number
-  loai: string
+  loai: {
+    id: number
+    loai: string
+    slug: string
+  }
   tags: [ITag]
 }
